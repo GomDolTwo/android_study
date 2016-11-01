@@ -24,11 +24,11 @@ public class GpsInfo extends Service implements LocationListener {
     boolean isGetLocation = false;      // GPS 상태값
 
     Location location;
-    double lat;         // 위도
-    double lon;         // 경도
+    double lat;     // 위도
+    double lon;     // 경도
 
     private static final long MIN_DISTANCE_UPDATES = 10;        // GPS 정보 업데이트 거리 10미터
-    private static final long MIN_TIME_UPDATES = 1000 * 60 * 1; // GPS 정보 업뎅트 시간 1/1000
+    private static final long MIN_TIME_UPDATES = 1000 * 60 * 1; // GPS 정보 업데이트 시간 1/1000
 
     protected LocationManager locationManager;
 
@@ -54,8 +54,8 @@ public class GpsInfo extends Service implements LocationListener {
 
                         if (location != null) {
                             // 위도, 경도 저장
-                            lat = location.getLatitude();
-                            lon = location.getLongitude();
+                           lat = location.getLatitude();
+                           lon = location.getLongitude();
                         }
                     }
                 }

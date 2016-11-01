@@ -1,6 +1,10 @@
 package com.jongmin.mylocationlogger;
 
+import android.graphics.Color;
 import android.graphics.Point;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -14,21 +18,35 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.maps.model.PolylineOptions;
+
+import java.util.ArrayList;
 
 public class MainActivity extends FragmentActivity implements OnMapClickListener {
 
     private GoogleMap mGoogleMap;
+    int cnt = 0;
+
+    final ArrayList<Double> m_lat_Array = new ArrayList<Double>();
+    final ArrayList<Double> m_lon_Array = new ArrayList<Double>();
+    final ArrayList<LatLng> m_loc_Array = new ArrayList<LatLng>();
+
+    Handler mHandler = new Handler(Looper.getMainLooper()) {
+        public void handleMessage(Message msg) {
+            init();
+            mHandler.sendEmptyMessageDelayed(0,1000*60*30); // 30분마다 GPS 기록
+        }
+    };
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         // BitmapDescriptorFactory 생성하기 위한 소스
         MapsInitializer.initialize(getApplicationContext());
 
-        init();
+        mHandler.sendEmptyMessage(0);       // init 반복하기 위한 핸들러
     }
 
     /** Map 클릭시 터치 이벤트 */
@@ -50,37 +68,50 @@ public class MainActivity extends FragmentActivity implements OnMapClickListener
      * 초기화
      * @author
      */
-    private void init() {
-
+    public void init() {
         GooglePlayServicesUtil.isGooglePlayServicesAvailable(this);
+
         mGoogleMap = ((SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map)).getMap();
 
-        // 맵의 이동
-        //mGoogleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(position, 15));
-
         GpsInfo gps = new GpsInfo(this);
+
         // GPS 사용유무 가져오기
         if (gps.isGetLocation()) {
-            double latitude = gps.getLatitude();
-            double longitude = gps.getLongitude();
+            m_lat_Array.add(0, gps.getLatitude());
+            m_lon_Array.add(0, gps.getLongitude());
 
             // Creating a LatLng object for the current location
-            LatLng latLng = new LatLng(latitude, longitude);
+            m_loc_Array.add(0, new LatLng(m_lat_Array.get(0), m_lon_Array.get(0)));
 
             // Showing the current location in Google Map
-            mGoogleMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
+            mGoogleMap.moveCamera(CameraUpdateFactory.newLatLng(m_loc_Array.get(0)));
 
             // Map 을 zoom 합니다.
             mGoogleMap.animateCamera(CameraUpdateFactory.zoomTo(13));
 
+            ++cnt;
             // 마커 설정.
             MarkerOptions optFirst = new MarkerOptions();
-            optFirst.position(latLng);// 위도 • 경도
-            optFirst.title("Current Position");// 제목 미리보기
+            optFirst.position(m_loc_Array.get(0));// 위도 • 경도
+            optFirst.title("Position " + cnt);// 제목 미리보기
             optFirst.snippet("Snippet");
             optFirst.icon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_launcher));
             mGoogleMap.addMarker(optFirst).showInfoWindow();
+
+            // 경로 직선 설정
+            if (cnt>=2)
+                mGoogleMap.addPolyline(new PolylineOptions().add(m_loc_Array.get(0), m_loc_Array.get(1)).width(5).color(Color.RED));
+
+            // 24시간이 지나면 초기화
+            if (cnt>48)
+            {
+                m_lat_Array.clear();        // 위도 기록 초기화
+                m_lon_Array.clear();        // 경도 기록 초기화
+                m_loc_Array.clear();        // GPS위치 정보 초기화 (위도 • 경도)
+
+                cnt = 0;
+            }
         }
     }
 }
