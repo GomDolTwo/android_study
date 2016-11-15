@@ -12,18 +12,9 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="&lt; 오늘의 사건 통계 >"
+        android:text="&lt; 총 사건 통계 >"
         android:id="@+id/textView5"
         android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="&lt; 총 사건 통계 >"
-        android:id="@+id/textView6"
-        android:layout_centerVertical="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
@@ -67,43 +58,6 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="식      사 :"
-        android:id="@+id/textView11"
-        android:layout_below="@+id/textView6"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="30dp" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="수      업 :"
-        android:id="@+id/textView12"
-        android:layout_below="@+id/textView11"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="대중교통 :"
-        android:id="@+id/textView13"
-        android:layout_below="@+id/textView12"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="친      목 :"
-        android:id="@+id/textView14"
-        android:layout_below="@+id/textView13"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:text="공      부 :"
         android:id="@+id/textView15"
         android:layout_below="@+id/textView10"
@@ -131,34 +85,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="공      부 :"
-        android:id="@+id/textView18"
-        android:layout_below="@+id/textView14"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="게      임 :"
-        android:id="@+id/textView19"
-        android:layout_below="@+id/textView18"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="운      동 :"
-        android:id="@+id/textView20"
-        android:layout_below="@+id/textView19"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="New Text"
+        android:text="통계내는 중..."
         android:id="@+id/textView21"
         android:layout_above="@+id/textView8"
         android:layout_centerHorizontal="true" />
@@ -166,7 +93,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="New Text"
+        android:text="통계내는 중..."
         android:id="@+id/textView22"
         android:layout_alignBottom="@+id/textView8"
         android:layout_alignLeft="@+id/textView21"
@@ -175,7 +102,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="New Text"
+        android:text="통계내는 중..."
         android:id="@+id/textView23"
         android:layout_alignBottom="@+id/textView9"
         android:layout_alignLeft="@+id/textView21"
@@ -184,7 +111,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="New Text"
+        android:text="통계내는 중..."
         android:id="@+id/textView24"
         android:layout_alignBottom="@+id/textView10"
         android:layout_alignLeft="@+id/textView22"
@@ -193,7 +120,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="New Text"
+        android:text="통계내는 중..."
         android:id="@+id/textView25"
         android:layout_above="@+id/textView16"
         android:layout_alignLeft="@+id/textView23"
@@ -202,7 +129,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="New Text"
+        android:text="통계내는 중..."
         android:id="@+id/textView26"
         android:layout_alignBottom="@+id/textView16"
         android:layout_alignLeft="@+id/textView24"
@@ -211,7 +138,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="New Text"
+        android:text="통계내는 중..."
         android:id="@+id/textView27"
         android:layout_alignBottom="@+id/textView17"
         android:layout_alignLeft="@+id/textView25"

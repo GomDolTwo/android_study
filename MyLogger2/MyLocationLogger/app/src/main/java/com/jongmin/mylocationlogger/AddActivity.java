@@ -14,16 +14,28 @@ public class AddActivity extends AppCompatActivity implements CommonData {
     MyOpenHelper helper = new MyOpenHelper(this);
     SQLiteDatabase db;
 
+    public void SQLexec(String name, String Lat, String Lon, SQLiteDatabase db) {
+        db.execSQL("insert into member(latitude, longitude, life) values ("
+                + Lat + ", "
+                + Lon + ", "
+                + "'"+ name +"');"
+        );
+    }
+
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add);
+
+        GpsInfo gps = new GpsInfo(this);
 
         final TextView LatTxt = (TextView) findViewById(R.id.lattxt);
         final TextView LonTxt = (TextView) findViewById(R.id.lontxt);
 
-        LatTxt.setText(Double.toString(m_lat_Array.get(0)));
-        LonTxt.setText(Double.toString(m_lon_Array.get(0)));
+        LatTxt.setText(Double.toString(gps.getLatitude()));
+        final String Latt = Double.toString(gps.getLatitude());
+        LonTxt.setText(Double.toString(gps.getLongitude()));
+        final String Lonn = Double.toString(gps.getLongitude());
 
         Button EatBtn = (Button) findViewById(R.id.button3);    // 식사
         Button ClaBtn = (Button) findViewById(R.id.button4);    // 수업
@@ -36,12 +48,7 @@ public class AddActivity extends AppCompatActivity implements CommonData {
         EatBtn.setOnClickListener(new Button.OnClickListener() {
             public void onClick(View v) {
                 db = helper.getWritableDatabase();
-                db.execSQL("insert into member(latitude, longitude, life) values ("
-                        + m_lat_Array.get(0) + ", "
-                        + m_lon_Array.get(0) + ", "
-                        + "'식사');"
-                );
-
+                SQLexec("식사", Latt, Lonn, db);
                 AddActivity.this.finish();
             }
         });
@@ -49,82 +56,47 @@ public class AddActivity extends AppCompatActivity implements CommonData {
         ClaBtn.setOnClickListener(new Button.OnClickListener() {
             public void onClick(View v) {
                 db = helper.getWritableDatabase();
-                db.execSQL("insert into member(latitude, longitude, life) values ("
-                        + m_lat_Array.get(0) + ", "
-                        + m_lon_Array.get(0) + ", "
-                        + "'수업');"
-                );
-
+                SQLexec("수업", Latt, Lonn, db);
                 AddActivity.this.finish();
             }
         });
 
         CarBtn.setOnClickListener(new Button.OnClickListener() {
             public void onClick(View v) {
-                // 대중교통
                 db = helper.getWritableDatabase();
-                db.execSQL("insert into member(latitude, longitude, life) values ("
-                        + m_lat_Array.get(0) + ", "
-                        + m_lon_Array.get(0) + ", "
-                        + "'대중교통');"
-                );
-
+                SQLexec("대중교통", Latt, Lonn, db);
                 AddActivity.this.finish();
             }
         });
 
         FriBtn.setOnClickListener(new Button.OnClickListener() {
             public void onClick(View v) {
-                // 친목
                 db = helper.getWritableDatabase();
-                db.execSQL("insert into member(latitude, longitude, life) values ("
-                        + m_lat_Array.get(0) + ", "
-                        + m_lon_Array.get(0) + ", "
-                        + "'친목');"
-                );
-
+                SQLexec("친목", Latt, Lonn, db);
                 AddActivity.this.finish();
             }
         });
 
         StuBtn.setOnClickListener(new Button.OnClickListener() {
             public void onClick(View v) {
-                // 공부
                 db = helper.getWritableDatabase();
-                db.execSQL("insert into member(latitude, longitude, life) values ("
-                        + m_lat_Array.get(0) + ", "
-                        + m_lon_Array.get(0) + ", "
-                        + "'공부');"
-                );
-
+                SQLexec("공부", Latt, Lonn, db);
                 AddActivity.this.finish();
             }
         });
 
         GamBtn.setOnClickListener(new Button.OnClickListener() {
             public void onClick(View v) {
-                // 게임
                 db = helper.getWritableDatabase();
-                db.execSQL("insert into member(latitude, longitude, life) values ("
-                        + m_lat_Array.get(0) + ", "
-                        + m_lon_Array.get(0) + ", "
-                        + "'게임');"
-                );
-
+                SQLexec("게임", Latt, Lonn, db);
                 AddActivity.this.finish();
             }
         });
 
         ExeBtn.setOnClickListener(new Button.OnClickListener() {
             public void onClick(View v) {
-                // 운동
                 db = helper.getWritableDatabase();
-                db.execSQL("insert into member(latitude, longitude, life) values ("
-                        + m_lat_Array.get(0) + ", "
-                        + m_lon_Array.get(0) + ", "
-                        + "'운동');"
-                );
-
+                SQLexec("운동", Latt, Lonn, db);
                 AddActivity.this.finish();
             }
         });

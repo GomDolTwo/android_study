@@ -11,17 +11,17 @@ public class MyOpenHelper extends SQLiteOpenHelper {
 
     Context context;
     public MyOpenHelper(Context context) {
-        super(context, "data.sqlite", null, 1);
+        super(context, "data2.sqlite", null, 1);
         this.context = context;
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("CREATE TABLE member (latitude DOUBLE, longitude DOUBLE, life TEXT);");
+        db.execSQL("CREATE TABLE member (latitude TEXT, longitude TEXT, life TEXT);");
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        db.execSQL("CREATE TABLE member (latitude DOUBLE, longitude DOUBLE, life TEXT);");
+        db.execSQL("CREATE TABLE member (latitude TEXT, longitude TEXT, life TEXT);");
     }
 }
