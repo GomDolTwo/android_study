@@ -1,5 +1,6 @@
 package com.jongmin.mylocationlogger;
 
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -10,6 +11,9 @@ import android.widget.TextView;
  * Created by JongMin on 2016-11-13.
  */
 public class AddActivity extends AppCompatActivity implements CommonData {
+    MyOpenHelper helper = new MyOpenHelper(this);
+    SQLiteDatabase db;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,43 +35,97 @@ public class AddActivity extends AppCompatActivity implements CommonData {
 
         EatBtn.setOnClickListener(new Button.OnClickListener() {
             public void onClick(View v) {
+                db = helper.getWritableDatabase();
+                db.execSQL("insert into member(latitude, longitude, life) values ("
+                        + m_lat_Array.get(0) + ", "
+                        + m_lon_Array.get(0) + ", "
+                        + "'식사');"
+                );
 
+                AddActivity.this.finish();
             }
         });
 
         ClaBtn.setOnClickListener(new Button.OnClickListener() {
             public void onClick(View v) {
+                db = helper.getWritableDatabase();
+                db.execSQL("insert into member(latitude, longitude, life) values ("
+                        + m_lat_Array.get(0) + ", "
+                        + m_lon_Array.get(0) + ", "
+                        + "'수업');"
+                );
 
+                AddActivity.this.finish();
             }
         });
 
         CarBtn.setOnClickListener(new Button.OnClickListener() {
             public void onClick(View v) {
+                // 대중교통
+                db = helper.getWritableDatabase();
+                db.execSQL("insert into member(latitude, longitude, life) values ("
+                        + m_lat_Array.get(0) + ", "
+                        + m_lon_Array.get(0) + ", "
+                        + "'대중교통');"
+                );
 
+                AddActivity.this.finish();
             }
         });
 
         FriBtn.setOnClickListener(new Button.OnClickListener() {
             public void onClick(View v) {
+                // 친목
+                db = helper.getWritableDatabase();
+                db.execSQL("insert into member(latitude, longitude, life) values ("
+                        + m_lat_Array.get(0) + ", "
+                        + m_lon_Array.get(0) + ", "
+                        + "'친목');"
+                );
 
+                AddActivity.this.finish();
             }
         });
 
         StuBtn.setOnClickListener(new Button.OnClickListener() {
             public void onClick(View v) {
+                // 공부
+                db = helper.getWritableDatabase();
+                db.execSQL("insert into member(latitude, longitude, life) values ("
+                        + m_lat_Array.get(0) + ", "
+                        + m_lon_Array.get(0) + ", "
+                        + "'공부');"
+                );
 
+                AddActivity.this.finish();
             }
         });
 
         GamBtn.setOnClickListener(new Button.OnClickListener() {
             public void onClick(View v) {
+                // 게임
+                db = helper.getWritableDatabase();
+                db.execSQL("insert into member(latitude, longitude, life) values ("
+                        + m_lat_Array.get(0) + ", "
+                        + m_lon_Array.get(0) + ", "
+                        + "'게임');"
+                );
 
+                AddActivity.this.finish();
             }
         });
 
         ExeBtn.setOnClickListener(new Button.OnClickListener() {
             public void onClick(View v) {
+                // 운동
+                db = helper.getWritableDatabase();
+                db.execSQL("insert into member(latitude, longitude, life) values ("
+                        + m_lat_Array.get(0) + ", "
+                        + m_lon_Array.get(0) + ", "
+                        + "'운동');"
+                );
 
+                AddActivity.this.finish();
             }
         });
     }

@@ -1,6 +1,7 @@
 package com.jongmin.mylocationlogger;
 
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.graphics.Point;
 import android.os.Handler;
@@ -22,8 +23,6 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.PolylineOptions;
-
-import java.util.ArrayList;
 
 public class MainActivity extends FragmentActivity implements OnMapClickListener, CommonData {
 
